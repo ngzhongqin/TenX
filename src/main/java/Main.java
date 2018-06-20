@@ -1,7 +1,9 @@
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import model.Vertex;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -15,7 +17,7 @@ public class Main {
         PropertyConfigurator.configure(logFilePath);
         logger.info("Started Main.class, application.root = " + logFilePath);
 
-
+        ArrayList<Vertex> vertices = new ArrayList<Vertex>();
 
     }
 
