@@ -3,13 +3,16 @@ package model;
 import java.util.ArrayList;
 
 public class Vertex {
+    private long id;
     private String exchange;
     private String currency;
     private ArrayList<Edge> edges;
 
-    public Vertex(String exchange,
+    public Vertex(long id,
+                  String exchange,
                   String currency,
                   ArrayList<Edge> edges){
+        this.id=id;
         this.exchange=exchange;
         this.currency=currency;
         this.edges=edges;
@@ -39,10 +42,24 @@ public class Vertex {
         this.edges = edges;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public static class Builder{
+        private long id;
         private String exchange;
         private String currency;
         private ArrayList<Edge> edges;
+
+        public Builder id(long id){
+            this.id=id;
+            return this;
+        }
 
         public Builder exchange(String exchange){
             this.exchange=exchange;
@@ -61,6 +78,7 @@ public class Vertex {
 
         public Vertex build(){
             Vertex model = new Vertex(
+                    id,
                     exchange,
                     currency,
                     edges

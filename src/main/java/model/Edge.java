@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Edge {
+    private long id;
     private Timestamp timestamp;
     private Vertex fromV;
     private Vertex toV;
@@ -41,21 +42,37 @@ public class Edge {
         this.factor = factor;
     }
 
-    public Edge(Timestamp timestamp,
+    public Edge(long id,
+                Timestamp timestamp,
                 Vertex fromV,
                 Vertex toV,
                 BigDecimal factor){
+        this.id=id;
         this.timestamp=timestamp;
         this.fromV=fromV;
         this.toV=toV;
         this.factor=factor;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public static class Builder{
+        private long id;
         private Timestamp timestamp;
         private Vertex fromV;
         private Vertex toV;
         private BigDecimal factor;
+
+        public Builder id(long id){
+            this.id=id;
+            return this;
+        }
 
         public Builder timestamp(Timestamp timestamp){
             this.timestamp=timestamp;
@@ -78,7 +95,7 @@ public class Edge {
         }
 
         public Edge build(){
-            Edge model = new Edge(timestamp,fromV,toV,factor);
+            Edge model = new Edge(id,timestamp,fromV,toV,factor);
             return model;
         }
 
